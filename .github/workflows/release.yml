@@ -9,7 +9,7 @@ jobs:
     environment: 
       name: uat
     uses: ./.github/workflows/deploy.yml
-    with:
+    secrets:
       envName:  ${{ secrets.env_name }}
 
         
@@ -18,5 +18,5 @@ jobs:
     environment: 
       name: prod
     uses: ./.github/workflows/deploy.yml
-    with:
+    secrets:
       envName: ${{ secrets.env_name }}
