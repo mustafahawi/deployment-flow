@@ -3,6 +3,7 @@ on:
     inputs:
       envName:
         required: true
+        type: string
 
 jobs:
   build:
