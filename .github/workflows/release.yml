@@ -7,7 +7,7 @@ on:
 jobs:
   uat:
     environment: uat
-    uses: mustafahawi/deployment-flow/.github/workflows/deploy.yml@main
+    uses: ./.github/workflows/deploy.yml@main
     secrets:
       envName: ${{ secrets.envName }}
 
@@ -15,6 +15,6 @@ jobs:
   prod:
     needs: uat
     environment: prod
-    uses: mustafahawi/deployment-flow/.github/workflows/deploy.yml@main
+    uses: ./.github/workflows/deploy.yml@main
     secrets:
       envName: ${{ secrets.envName }}
