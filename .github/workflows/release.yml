@@ -6,18 +6,15 @@ on:
 
 jobs:
   uat:
-    runs-on: ubuntu-latest
     environment: uat
-    steps:
-      - uses: mustafahawi/deployment-flow/.github/workflows/deploy.yml@main
-        with:
-          envName: ${{ secrets.envName }}
+    uses: mustafahawi/deployment-flow/.github/workflows/deploy.yml@main
+    secrets:
+      envName: ${{ secrets.envName }}
+
         
   prod:
-    runs-on: ubuntu-latest
     needs: uat
     environment: prod
-    steps:
-      - uses: mustafahawi/deployment-flow/.github/workflows/deploy.yml@main
-        with:
-          envName: ${{ secrets.envName }}
+    uses: mustafahawi/deployment-flow/.github/workflows/deploy.yml@main
+    secrets:
+      envName: ${{ secrets.envName }}
