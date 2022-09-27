@@ -6,15 +6,13 @@ on:
 
 jobs:
   uat:
-    environment: uat
     uses: ./.github/workflows/deploy.yml
     secrets:
-      envName: ${{ secrets.envName }}
+      envName: 'uat'
 
         
   prod:
     needs: uat
-    environment: prod
     uses: ./.github/workflows/deploy.yml
     secrets:
-      envName: ${{ secrets.envName }}
+      envName: 'prod'
