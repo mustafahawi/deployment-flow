@@ -6,6 +6,8 @@ on:
 
 jobs:
   uat:
+    environment: 
+      name: uat
     uses: ./.github/workflows/deploy.yml
     with:
       envName: 'uat'
@@ -13,6 +15,8 @@ jobs:
         
   prod:
     needs: uat
+    environment: 
+      name: prod
     uses: ./.github/workflows/deploy.yml
     with:
       envName: 'prod'
