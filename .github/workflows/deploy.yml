@@ -3,3 +3,12 @@ on:
     secrets:
       envName:
         required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:      
+      - name: Deploy
+        run: echo "${{secrets.envName}}"
+        
