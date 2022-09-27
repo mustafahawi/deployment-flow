@@ -1,6 +1,6 @@
 on:
   workflow_call:
-    secrets:
+    inputs:
       envName:
         required: true
 
@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
       - name: Deploy
-        run: echo "${{secrets.envName}}"
+        run: echo "${{inputs.envName}}"

@@ -7,12 +7,12 @@ on:
 jobs:
   uat:
     uses: ./.github/workflows/deploy.yml
-    secrets:
+    with:
       envName: 'uat'
 
         
   prod:
     needs: uat
     uses: ./.github/workflows/deploy.yml
-    secrets:
+    with:
       envName: 'prod'
