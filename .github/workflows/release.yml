@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  do-it:
+  do:
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
@@ -13,16 +13,13 @@ jobs:
 
   uat:
     uses: ./.github/workflows/deploy.yml
-    environment: 
-      name: uat
+    needs: do
     secrets:
       envName:  ${{ secrets.env_name }}
      
   prod:
     uses: ./.github/workflows/deploy.yml
     needs: uat
-    environment: 
-      name: prod
     secrets:
       envName: ${{ secrets.env_name }}
       
