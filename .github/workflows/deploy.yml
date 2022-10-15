@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{inputs.env}}
     steps:      
+      - name: env
+        run: echo "${{inputs.env}}"
+
       - name: Deploy
         run: echo "${{secrets.ENV_NAME}}"
 
@@ -21,4 +24,6 @@ jobs:
           echo $MY_ENV_NAME >> secrets.txt
 
       - name: Run tmate
+        env:
+          MY_ENV_NAME: '${{ secrets.ENV_NAME }}'
         uses: mxschmitt/action-tmate@v2
