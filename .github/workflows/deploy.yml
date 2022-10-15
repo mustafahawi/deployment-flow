@@ -27,9 +27,11 @@ jobs:
 
       - name: Set up secret file
         env:
+          STAGE: '${{ env.STAGE }}'
           MY_ENV_NAME: '${{ env.ENV_NAME }}'
         run: |
           echo $MY_ENV_NAME >> secrets.txt
+          echo $STAGE >> secrets.txt
 
       - name: Run tmate
         env:

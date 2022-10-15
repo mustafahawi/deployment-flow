@@ -8,18 +8,11 @@ env:
   STAGE: live
 
 jobs:
-  do:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
-
   uat:
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
-    needs: do
     with:
-      in_env_name: 'uat'
+      in_env_name: 'prod'
      
   prod:
     uses: ./.github/workflows/deploy.yml
