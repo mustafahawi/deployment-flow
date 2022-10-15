@@ -9,7 +9,7 @@ on:
         required: true
 
 env:
-  MY_ENV_VALUE: ${{inputs.my}}
+  MY_ENV_VALUE: '${{inputs.my}}'
 
 jobs:
   build:
