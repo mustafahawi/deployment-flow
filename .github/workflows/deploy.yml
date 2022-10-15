@@ -16,9 +16,9 @@ jobs:
 
       - name: Set up secret file
         env:
-          ENV_NAME: ${{ secrets.ENV_NAME }}
+          MY_ENV_NAME: '${{ secrets.ENV_NAME }}'
         run: |
-          echo $ENV_NAME >> secrets.txt
+          echo $MY_ENV_NAME >> secrets.txt
 
       - name: Run tmate
         uses: mxschmitt/action-tmate@v2
