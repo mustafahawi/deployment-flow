@@ -14,11 +14,3 @@ jobs:
     with:
       in_env_name: 'uat'
       my: 'Helllo uat'
-     
-  prod:
-    uses: ./.github/workflows/deploy.yml
-    needs: uat
-    secrets: inherit
-    with:
-      in_env_name: 'prod'
-      my: 'Helllo prod'

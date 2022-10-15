@@ -9,39 +9,21 @@ on:
         required: true
 
 env:
-  MY_ENV_VALUE: '${{inputs.my}}'
+  MY_ENV_VALUE: ${{inputs.my}}
 
 jobs:
   build:
     name: Deploy
     runs-on: ubuntu-latest
     environment: ${{inputs.in_env_name}}
-    env:
-      ENV_NAME: '${{ secrets.ENV_NAME }}'
     steps:            
       - name: Deploy
         run: echo "${{env.MY_ENV_VALUE}}"
       
       - name: Set up secret file
-        env:
-          M_ENV_VALUE: '${{ env.MY_ENV_VALUE }}'
         run: |
-          echo $M_ENV_VALUE >> secrets.txt
+          echo "${{env.MY_ENV_VALUE}}" >> secrets.txt
           echo $MY_ENV_VALUE >> secrets.txt
 
-  build2:
-    name: Deploy
-    runs-on: ubuntu-latest
-    environment: ${{inputs.in_env_name}}
-    env:
-      ENV_NAME: '${{ secrets.ENV_NAME }}'
-    steps:            
-      - name: Deploy
-        run: echo "${{env.MY_ENV_VALUE}}"
-      
-      - name: Set up secret file
-        env:
-          M_ENV_VALUE: '${{ env.MY_ENV_VALUE }}'
-        run: |
-          echo $M_ENV_VALUE >> secrets.txt
-          echo $MY_ENV_VALUE >> secrets.txt
+      - name: Run tmate
+        uses: mxschmitt/action-tmate@v2
