@@ -4,6 +4,9 @@ name: CI
 on:
   workflow_dispatch:
 
+env:
+  STAGE: live
+
 jobs:
   do:
     runs-on: ubuntu-latest
@@ -13,6 +16,7 @@ jobs:
 
   uat:
     uses: ./.github/workflows/deploy.yml
+    secrets: inherit
     needs: do
     with:
       in_env_name: 'uat'
@@ -20,5 +24,6 @@ jobs:
   prod:
     uses: ./.github/workflows/deploy.yml
     needs: uat
+    secrets: inherit
     with:
       in_env_name: 'prod'

@@ -9,13 +9,16 @@ jobs:
   build:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: '${{inputs.in_env_name}}'
+    environment: uat
     env:
       ENV_NAME: '${{ secrets.ENV_NAME }}'
     steps:      
       - name: env_name
         run: echo "${{inputs.in_env_name}}"
 
+      - name: Deploy
+        run: echo "${{env.STAGE}}"
+      
       - name: Deploy
         run: echo "${{env.ENV_NAME}}"
       
