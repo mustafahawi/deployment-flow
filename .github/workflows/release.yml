@@ -14,14 +14,12 @@ jobs:
   uat:
     uses: ./.github/workflows/deploy.yml
     needs: do
-    environment: uat
-    secrets:
-      envName:  ${{ secrets.env_name }}
+    inputs:
+      env: 'uat'
      
   prod:
     uses: ./.github/workflows/deploy.yml
     needs: uat
-    environment: prod
-    secrets:
-      envName: ${{ secrets.env_name }}
+    inputs:
+      env: 'prod'
       
