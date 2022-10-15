@@ -1,7 +1,7 @@
 on:
   workflow_call:
     inputs:
-      env_name:
+      in_env_name:
         type: string
         required: true
 
@@ -9,15 +9,18 @@ jobs:
   build:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: '${{inputs.env_name}}'
+    environment: '${{inputs.in_env_name}}'
     env:
       ENV_NAME: '${{ secrets.ENV_NAME }}'
     steps:      
       - name: env_name
-        run: echo "${{inputs.env_name}}"
+        run: echo "${{inputs.in_env_name}}"
 
       - name: Deploy
         run: echo "${{env.ENV_NAME}}"
+      
+      - name: Deploy
+        run: echo "${{secrets.TEST_ENV}}"
 
       - name: Set up secret file
         env:

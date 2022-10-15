@@ -15,10 +15,10 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     needs: do
     with:
-      env_name: 'uat'
+      in_env_name: 'uat'
      
   prod:
     uses: ./.github/workflows/deploy.yml
     needs: uat
     with:
-      env_name: 'prod'
+      in_env_name: 'prod'
