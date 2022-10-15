@@ -2,6 +2,7 @@ on:
   workflow_call:
     inputs:
       env:
+        type: string
         required: true
 
 jobs:
