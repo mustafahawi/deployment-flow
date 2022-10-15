@@ -13,4 +13,13 @@ jobs:
     secrets: inherit
     with:
       in_env_name: 'uat'
+      drop_create_db: true
       my: 'Helllo uat'
+     
+  prod:
+    uses: ./.github/workflows/deploy.yml
+    needs: uat
+    secrets: inherit
+    with:
+      in_env_name: 'prod'
+      my: 'Helllo prod'
