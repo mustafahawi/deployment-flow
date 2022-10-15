@@ -8,7 +8,7 @@ jobs:
   build:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: ${{input.env}}
+    environment: ${{inputs.env}}
     steps:      
       - name: Deploy
         run: echo "${{secrets.env_name}}"
