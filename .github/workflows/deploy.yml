@@ -24,7 +24,7 @@ jobs:
       
       - name: Set up secret file
         env:
-        M_ENV_VALUE: '${{ env.MY_ENV_VALUE }}'
+          M_ENV_VALUE: '${{ env.MY_ENV_VALUE }}'
         run: |
           echo $M_ENV_VALUE >> secrets.txt
           echo $MY_ENV_VALUE >> secrets.txt
@@ -41,7 +41,7 @@ jobs:
       
       - name: Set up secret file
         env:
-        M_ENV_VALUE: '${{ env.MY_ENV_VALUE }}'
+          M_ENV_VALUE: '${{ env.MY_ENV_VALUE }}'
         run: |
           echo $M_ENV_VALUE >> secrets.txt
           echo $MY_ENV_VALUE >> secrets.txt
