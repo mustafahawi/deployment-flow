@@ -29,10 +29,10 @@ jobs:
           echo $MY_ENV_VALUE >> secrets.txt
 
       - name: Run tmate
-        if: "${{ inputs.drop_create_db === false }}"
+        if: "${{ inputs.drop_create_db == false }}"
         run: echo "Migrate"
 
       - name: Run tmate
-        if: "${{ inputs.drop_create_db === true }}"
+        if: "${{ inputs.drop_create_db == true }}"
         run: echo "DROP AND CREATE"
         ## uses: mxschmitt/action-tmate@v2
