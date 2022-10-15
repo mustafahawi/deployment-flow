@@ -29,7 +29,7 @@ jobs:
           echo $M_ENV_VALUE >> secrets.txt
           echo $MY_ENV_VALUE >> secrets.txt
 
-  build:
+  build2:
     name: Deploy
     runs-on: ubuntu-latest
     environment: ${{inputs.in_env_name}}
