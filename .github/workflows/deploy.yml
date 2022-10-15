@@ -9,7 +9,7 @@ jobs:
   build:
     name: Deploy
     runs-on: ubuntu-latest
-    environment: uat
+    environment: ${{inputs.in_env_name}}
     env:
       ENV_NAME: '${{ secrets.ENV_NAME }}'
     steps:      
