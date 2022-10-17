@@ -13,6 +13,7 @@ on:
 
 env:
   SECRETS_MY_ENV_VALUE: ${{secrets.ENV_NAME}}
+  
 
 jobs:
   build:
@@ -27,6 +28,7 @@ jobs:
         run: |
           echo "${{env.SECRETS_MY_ENV_VALUE}}" >> secrets.txt
           echo "${{env.ENV_NAME}}" >> secrets.txt
-          echo $MY_ENV_VALUE >> secrets.txt
-
+          echo "${{secrets.ENV_NAME}}" >> secrets.txt 
+          echo $SECRETS_MY_ENV_VALUE >> secrets.txt
+          
       - uses: mxschmitt/action-tmate@v2
