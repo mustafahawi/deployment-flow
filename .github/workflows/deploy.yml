@@ -12,7 +12,7 @@ on:
         required: true
 
 env:
-  MY_ENV_VALUE: ${{inputs.my}}
+  SECRETS_MY_ENV_VALUE: ${{secrets.ENV_NAME}}
 
 jobs:
   build:
@@ -21,18 +21,12 @@ jobs:
     environment: ${{inputs.in_env_name}}
     steps:            
       - name: Deploy
-        run: echo "${{env.MY_ENV_VALUE}}"
+        run: echo "${{env.SECRETS_MY_ENV_VALUE}}"
       
       - name: Set up secret file
         run: |
-          echo "${{env.MY_ENV_VALUE}}" >> secrets.txt
+          echo "${{env.SECRETS_MY_ENV_VALUE}}" >> secrets.txt
+          echo "${{env.ENV_NAME}}" >> secrets.txt
           echo $MY_ENV_VALUE >> secrets.txt
 
-      - name: Run tmate
-        if: "${{ inputs.drop_create_db == false }}"
-        run: echo "Migrate"
-
-      - name: Run tmate
-        if: "${{ inputs.drop_create_db == true }}"
-        run: echo "DROP AND CREATE"
-        ## uses: mxschmitt/action-tmate@v2
+      - uses: mxschmitt/action-tmate@v2
