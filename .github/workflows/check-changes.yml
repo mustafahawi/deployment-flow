@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+on:
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: ${{inputs.in_env_name}}
+    steps:            
+      - name: head sha
+        run: |
+          echo ${{ github.event.pull_request.head.sha }}
+
+      - name: Get changed files
+        id: changed-files-1
+        uses: tj-actions/changed-files@v33
+        with:
+          sha: ${{ github.event.pull_request.head.sha }}
+          # base_sha: ${{ github.event.pull_request.base.sha }}
+          files: |
+            service 1/**
+
+      - name: Run step if any of the listed files above change
+        if: steps.changed-files-1.outputs.any_changed == 'true'
+        run: |
+          echo "Service 1"
+
+      - name: Get changed files
+        id: changed-files-2
+        uses: tj-actions/changed-files@v33
+        with:
+          sha: ${{ github.event.pull_request.head.sha }}
+          # base_sha: ${{ github.event.pull_request.base.sha }}
+          files: |
+            service 2/**
+
+      - name: Run step if any of the listed files above change
+        if: steps.changed-files-2.outputs.any_changed == 'true'
+        run: |
+          echo "Service 2"

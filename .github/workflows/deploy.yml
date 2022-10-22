@@ -31,4 +31,4 @@ jobs:
           echo "${{secrets.ENV_NAME}}" >> secrets.txt 
           echo $SECRETS_MY_ENV_VALUE >> secrets.txt
           
-      - uses: mxschmitt/action-tmate@v2
+      # - uses: mxschmitt/action-tmate@v2
