@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{inputs.in_env_name}}
     steps:            
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
       - name: head sha
         run: |
           echo ${{ github.event.pull_request.head.sha }}
