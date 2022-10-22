@@ -26,10 +26,10 @@ jobs:
       
       - name: Set the value
         run: |
-          echo ${{ github.actor.role }}
+          echo ${{ github.actor }}
 
-      - name: Role maintainer
-        if: github.actor.role == 'maintainer'
+      - name: Role
+        if: github.actor == 'mustafahawi'
         run: |
           echo ${{ github.actor.role }}
           
