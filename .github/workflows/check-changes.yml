@@ -22,6 +22,16 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           latest: true
+
+      
+      - name: Set the value
+        run: |
+          echo ${{ github.actor.role }}
+
+      - name: Role maintainer
+        if: github.actor.role == 'maintainer'
+        run: |
+          echo ${{ github.actor.role }}
           
       - name: Set the value
         run: |
