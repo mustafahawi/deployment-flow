@@ -17,22 +17,33 @@ jobs:
           fetch-depth: 0
 
       - uses: cardinalby/git-get-release-action@v1
-        id: last-release
+        id: latest-release
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           latest: true
-
-      - name: Latest Release
+          
+      - name: Set the value
         run: |
-          echo ${{ steps.last-release.outputs.tag_name }}
+          echo "latest_tag=${{ steps.latest-release.outputs.tag_name }}" >> $GITHUB_ENV
+          
+      - name: Prev commit
+        run: |
+          echo ${{ env.latest_tag }}
+          OUTPUT=$(git rev-list -n 1 ${{ env.latest_tag }})
+          echo "${OUTPUT}"
+          echo "prev_commit=${OUTPUT}" >> $GITHUB_ENV
+
+      - name: Prev commit display
+        run: |
+          echo ${{ env.prev_commit }}
           
       - name: Get changed files
         id: changed-files-1
         uses: tj-actions/changed-files@v33
         with:
-          sha: ${{ github.event.pull_request.head.sha }}
-          # base_sha: ${{ github.event.pull_request.base.sha }}
+          # sha: ${{ github.event.pull_request.head.sha }}
+          base_sha: ${{ env.prev_commit }}
           files: |
             service 1/**
 
@@ -45,8 +56,8 @@ jobs:
         id: changed-files-2
         uses: tj-actions/changed-files@v33
         with:
-          sha: ${{ github.event.pull_request.head.sha }}
-          # base_sha: ${{ github.event.pull_request.base.sha }}
+          # sha: ${{ github.event.pull_request.head.sha }}
+          base_sha: ${{ env.prev_commit }}
           files: |
             service 2/**
 
