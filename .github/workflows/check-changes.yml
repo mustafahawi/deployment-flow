@@ -29,7 +29,7 @@ jobs:
           echo ${{ github.actor }}
 
       - name: Role
-        if: github.actor == 'mustafahawi'
+        if: contains('["mustafahawi","xxx"]', github.actor)
         run: |
           echo ${{ github.actor.role }}
           
