@@ -1,9 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Check Changes
+name: Check Changes ${{inputs.in_env_name}}
 on:
   workflow_dispatch:
-
+    inputs:
+      in_env_name:
+        type: string
+        required: true
 
 jobs:
   build:
