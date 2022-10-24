@@ -55,13 +55,13 @@ jobs:
           # sha: ${{ github.event.pull_request.head.sha }}
           base_sha: ${{ env.prev_commit }}
           files: |
-            '.github/**'
-            'services 1/**'
-            'common/**'
-            'data-layer/**'
-            'scripts/generate-config/**'
-            'package.json'
-            'package-lock.json'
+            .github/**
+            services 1/**
+            common/**
+            data-layer/**
+            scripts/generate-config/**
+            package.json
+            package-lock.json
 
       - name: Run step if any of the listed files above change
         if: steps.changed-files-1.outputs.any_changed == 'true'
@@ -75,13 +75,13 @@ jobs:
           # sha: ${{ github.event.pull_request.head.sha }}
           base_sha: ${{ env.prev_commit }}
           files: |
-            '.github/**'
-            'services 2/**'
-            'common/**'
-            'data-layer/**'
-            'scripts/generate-config/**'
-            'package.json'
-            'package-lock.json'
+            .github/**
+            services 2/**
+            common/**
+            data-layer/**
+            scripts/generate-config/**
+            package.json
+            package-lock.json
 
       - name: Run step if any of the listed files above change
         if: steps.changed-files-2.outputs.any_changed == 'true'
